@@ -1,0 +1,359 @@
+/* Etiqueta design system — tokens, base, and shared component classes.
+   See docs/DESIGN_SYSTEM.md and docs/PALETTE.md. */
+
+:root {
+  --paper: #fbf9f4;
+  --paper-2: #f2eee4;
+  --card: #ffffff;
+  --graphite: #1f2421;
+  --graphite-70: #3b423d;
+  --pine: #2f6b4f;
+  --pine-600: #245840;
+  --pine-tint: #e4eee7;
+  --manila: #e4c9a0;
+  --manila-line: #c9a96b;
+  --mist: #8a938c;
+  --line: #e1dcd0;
+  --amber: #e08a3c;
+  --amber-tint: #f8e9d6;
+  --rust: #b23a2e;
+  --rust-tint: #f6ded9;
+  --sky: #3e7ca6;
+
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --shadow-overlay: 0 8px 28px rgba(31, 36, 33, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141715;
+    --paper-2: #1c201d;
+    --card: #1e2320;
+    --graphite: #ece9e1;
+    --graphite-70: #b7bcb4;
+    --pine: #5fae86;
+    --pine-600: #4e9973;
+    --pine-tint: #1e2a24;
+    --manila: #b79a66;
+    --manila-line: #8a6d3b;
+    --mist: #7c857d;
+    --line: #2a2f2b;
+    --amber: #e7a24e;
+    --amber-tint: #2e2418;
+    --rust: #d46a5e;
+    --rust-tint: #2e1c19;
+    --sky: #6ba6ce;
+    --shadow-overlay: 0 8px 28px rgba(0, 0, 0, 0.45);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--graphite);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pine);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Etiqueta tag ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--manila);
+  color: #1f2421;
+  border: 1px solid var(--manila-line);
+  border-radius: var(--r-sm);
+  padding: 4px 10px 4px 15px;
+  position: relative;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--manila-line);
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tag.lg {
+  font-size: 1.05rem;
+  padding: 9px 16px 9px 26px;
+  border-radius: var(--r-md);
+}
+.tag.lg::before {
+  width: 10px;
+  height: 10px;
+  left: 10px;
+}
+
+/* ---------- path breadcrumb ---------- */
+.path {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--graphite-70);
+}
+.path .sep {
+  color: var(--mist);
+}
+.path .last {
+  color: var(--graphite);
+  font-weight: 600;
+}
+
+/* ---------- category chip ---------- */
+.catchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--graphite);
+  font-family: var(--font-body);
+  border-radius: var(--r-sm);
+  padding: 5px 11px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.catchip .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+.catchip.active {
+  border-color: var(--pine);
+  background: var(--pine-tint);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: var(--r-sm);
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: var(--graphite);
+  background: transparent;
+}
+.btn.primary {
+  background: var(--pine);
+  color: #fff;
+}
+.btn.primary:hover {
+  background: var(--pine-600);
+}
+.btn.secondary {
+  border-color: var(--line);
+  background: var(--card);
+}
+.btn.secondary:hover {
+  background: var(--paper-2);
+}
+.btn.danger {
+  color: var(--rust);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ---------- inputs ---------- */
+.field {
+  display: block;
+}
+.field > span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--graphite);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+/* ---------- item card ---------- */
+.item-card {
+  display: flex;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px;
+}
+.item-card .thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-sm);
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  background: var(--pine-tint);
+  color: var(--pine);
+}
+.item-card img.thumb {
+  object-fit: cover;
+}
+.item-card .body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.item-card .name {
+  font-weight: 600;
+  font-size: 1.02rem;
+  align-self: flex-start;
+}
+.item-card a.name:hover {
+  text-decoration: underline;
+}
+.item-card .meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.qty {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--graphite-70);
+  font-weight: 600;
+}
+
+/* ---------- photos ---------- */
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.photo-thumb {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(31, 36, 33, 0.72);
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.photo-add {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--r-sm);
+  border: 1px dashed var(--manila-line);
+  background: var(--paper-2);
+  color: var(--mist);
+  font-size: 1.8rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.photo-add:hover {
+  border-color: var(--pine);
+  color: var(--pine);
+}
+
+/* ---------- empty state ---------- */
+.empty {
+  text-align: center;
+  padding: 44px 16px;
+  color: var(--graphite-70);
+}
+.empty h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0 0 6px;
+  color: var(--graphite);
+}
+.empty p {
+  margin: 0 0 16px;
+}
+
+/* ---------- utilities ---------- */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.muted {
+  color: var(--mist);
+  font-size: 0.85rem;
+}
+.spinner {
+  color: var(--mist);
+  padding: 32px;
+  text-align: center;
+}

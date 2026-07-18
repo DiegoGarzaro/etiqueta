@@ -1,0 +1,16 @@
+# Environment (contains secrets)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.db
+*.db-journal
+.pytest_cache/
+.ruff_cache/
+backend/media/
+
+# Node
+node_modules/
+dist/

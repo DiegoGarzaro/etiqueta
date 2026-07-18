@@ -1,0 +1,69 @@
+/* Print layout for QR label sheets (A4). */
+
+.labels-sheet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 12px;
+  background: #fff;
+  color: #1f2421;
+  break-inside: avoid;
+}
+.label .label-body {
+  min-width: 0;
+}
+.label .label-code {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.label .label-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 2px;
+}
+.label .label-type {
+  font-size: 0.75rem;
+  color: #6b746c;
+  margin-top: 2px;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  .noprint {
+    display: none !important;
+  }
+  .nav,
+  .fab {
+    display: none !important;
+  }
+  .content {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .labels-sheet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm;
+    margin-top: 0;
+  }
+  .label {
+    border-color: #cbd0c8;
+  }
+}

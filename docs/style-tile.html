@@ -1,0 +1,410 @@
+<title>Etiqueta — Style Tile</title>
+<style>
+  :root {
+    --paper: #FBF9F4; --paper-2: #F2EEE4; --card: #FFFFFF;
+    --graphite: #1F2421; --graphite-70: #3B423D;
+    --pine: #2F6B4F; --pine-600: #245840; --pine-tint: #E4EEE7;
+    --manila: #E4C9A0; --manila-line: #C9A96B;
+    --mist: #8A938C; --line: #E1DCD0;
+    --amber: #E08A3C; --amber-tint: #F8E9D6;
+    --rust: #B23A2E; --rust-tint: #F6DED9; --sky: #3E7CA6;
+
+    --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+
+    --r-sm: 8px; --r-md: 12px; --r-lg: 16px;
+    --shadow-overlay: 0 8px 28px rgba(31,36,33,.14);
+    --maxw: 1080px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #141715; --paper-2: #1C201D; --card: #1E2320;
+      --graphite: #ECE9E1; --graphite-70: #B7BCB4;
+      --pine: #5FAE86; --pine-600: #4E9973; --pine-tint: #1E2A24;
+      --manila: #B79A66; --manila-line: #8A6D3B;
+      --mist: #7C857D; --line: #2A2F2B;
+      --amber: #E7A24E; --amber-tint: #2E2418;
+      --rust: #D46A5E; --rust-tint: #2E1C19; --sky: #6BA6CE;
+      --shadow-overlay: 0 8px 28px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #FBF9F4; --paper-2: #F2EEE4; --card: #FFFFFF;
+    --graphite: #1F2421; --graphite-70: #3B423D;
+    --pine: #2F6B4F; --pine-600: #245840; --pine-tint: #E4EEE7;
+    --manila: #E4C9A0; --manila-line: #C9A96B;
+    --mist: #8A938C; --line: #E1DCD0;
+    --amber: #E08A3C; --amber-tint: #F8E9D6;
+    --rust: #B23A2E; --rust-tint: #F6DED9; --sky: #3E7CA6;
+    --shadow-overlay: 0 8px 28px rgba(31,36,33,.14);
+  }
+  :root[data-theme="dark"] {
+    --paper: #141715; --paper-2: #1C201D; --card: #1E2320;
+    --graphite: #ECE9E1; --graphite-70: #B7BCB4;
+    --pine: #5FAE86; --pine-600: #4E9973; --pine-tint: #1E2A24;
+    --manila: #B79A66; --manila-line: #8A6D3B;
+    --mist: #7C857D; --line: #2A2F2B;
+    --amber: #E7A24E; --amber-tint: #2E2418;
+    --rust: #D46A5E; --rust-tint: #2E1C19; --sky: #6BA6CE;
+    --shadow-overlay: 0 8px 28px rgba(0,0,0,.45);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--graphite);
+    font-family: var(--font-body); line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: clamp(20px, 4vw, 56px); }
+
+  /* ---- signature tag: the Etiqueta ---- */
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--manila); color: #1F2421;
+    border: 1px solid var(--manila-line); border-radius: var(--r-sm);
+    padding: 5px 11px 5px 16px; position: relative;
+    font-family: var(--font-mono); font-weight: 600; font-size: .78rem;
+    letter-spacing: .04em; text-transform: uppercase; white-space: nowrap;
+  }
+  .tag::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--paper); border: 1.5px solid var(--manila-line);
+    position: absolute; left: 6px; top: 50%; transform: translateY(-50%);
+  }
+  .tag.lg { font-size: 1.25rem; padding: 12px 20px 12px 30px; border-radius: var(--r-md); }
+  .tag.lg::before { width: 12px; height: 12px; left: 11px; }
+
+  .path {
+    display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: .8rem; color: var(--graphite-70);
+    letter-spacing: .02em;
+  }
+  .path .sep { color: var(--mist); }
+  .path .last { color: var(--graphite); font-weight: 600; }
+
+  /* ---- hero ---- */
+  header.hero {
+    border-bottom: 1px solid var(--line); padding-bottom: 36px; margin-bottom: 44px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: .72rem; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--pine); font-weight: 600;
+  }
+  .wordmark {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(2.6rem, 8vw, 4.6rem); line-height: .98; letter-spacing: -.02em;
+    margin: 14px 0 10px; text-wrap: balance;
+  }
+  .wordmark .dot { color: var(--pine); }
+  .lede { max-width: 52ch; color: var(--graphite-70); font-size: 1.06rem; }
+  .hero-tags { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; align-items: center; }
+
+  /* ---- section scaffolding ---- */
+  section { margin-bottom: 52px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; }
+  .sec-num {
+    font-family: var(--font-mono); font-size: .78rem; color: var(--mist);
+    letter-spacing: .05em;
+  }
+  .sec-title { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; letter-spacing: -.01em; margin: 0; }
+  .sec-note { color: var(--mist); font-size: .9rem; margin: 0 0 0 auto; text-align: right; }
+
+  .grid { display: grid; gap: 16px; }
+
+  /* ---- palette ---- */
+  .swatches { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .sw {
+    border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden;
+    background: var(--card);
+  }
+  .sw .chip { height: 66px; }
+  .sw .meta { padding: 10px 12px; }
+  .sw .nm { font-weight: 600; font-size: .85rem; }
+  .sw .hex { font-family: var(--font-mono); font-size: .74rem; color: var(--mist); text-transform: uppercase; }
+
+  .cats { display: flex; flex-wrap: wrap; gap: 10px; }
+  .catchip {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); background: var(--card);
+    border-radius: var(--r-sm); padding: 6px 12px; font-size: .84rem; font-weight: 500;
+  }
+  .catchip .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ---- type specimen ---- */
+  .type-row { border-top: 1px solid var(--line); padding: 18px 0; display: grid; grid-template-columns: 118px 1fr; gap: 20px; align-items: baseline; }
+  .type-row:first-child { border-top: 0; }
+  .type-key { font-family: var(--font-mono); font-size: .72rem; color: var(--mist); text-transform: uppercase; letter-spacing: .06em; }
+  .t-display-xl { font-family: var(--font-display); font-weight: 700; font-size: 2.25rem; line-height: 1.1; letter-spacing: -.02em; }
+  .t-display-l { font-family: var(--font-display); font-weight: 700; font-size: 1.75rem; line-height: 1.15; }
+  .t-heading { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; }
+  .t-body { font-size: 1rem; }
+  .t-small { font-size: .875rem; color: var(--graphite-70); }
+  .t-code { font-family: var(--font-mono); font-weight: 500; font-size: .8125rem; letter-spacing: .02em; text-transform: uppercase; }
+  .font-note { font-size: .82rem; color: var(--mist); margin-top: 6px; }
+
+  /* ---- components ---- */
+  .cols { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: start; }
+  .panel {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md);
+    padding: 20px;
+  }
+  .panel h3 { font-family: var(--font-display); font-weight: 600; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mist); margin: 0 0 16px; }
+  .btn { font-family: var(--font-body); font-weight: 600; font-size: .92rem; border-radius: var(--r-sm); padding: 10px 16px; border: 1px solid transparent; cursor: pointer; }
+  .btn.primary { background: var(--pine); color: #fff; }
+  .btn.primary:hover { background: var(--pine-600); }
+  .btn.secondary { background: transparent; color: var(--graphite); border-color: var(--line); }
+  .btn.secondary:hover { background: var(--paper-2); }
+  .btn.danger { background: transparent; color: var(--rust); border-color: transparent; }
+  .btn:focus-visible { outline: 2px solid var(--pine); outline-offset: 2px; }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+  .field { display: block; }
+  .field label { display: block; font-size: .8rem; font-weight: 600; margin-bottom: 6px; }
+  .field input {
+    width: 100%; padding: 11px 13px; border-radius: var(--r-sm);
+    border: 1px solid var(--line); background: var(--paper); color: var(--graphite);
+    font-family: var(--font-body); font-size: .95rem;
+  }
+  .field input:focus-visible { outline: 2px solid var(--pine); outline-offset: 2px; border-color: var(--pine); }
+
+  /* item card */
+  .item-card { display: flex; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); padding: 14px; }
+  .thumb { width: 60px; height: 60px; border-radius: var(--r-sm); flex: 0 0 auto; display: grid; place-items: center; background: var(--pine-tint); color: var(--pine); }
+  .item-body { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .item-name { font-weight: 600; font-size: 1.02rem; }
+  .item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .qty { font-family: var(--font-mono); font-size: .8rem; color: var(--graphite-70); font-weight: 600; }
+
+  /* tree */
+  .tree { font-size: .95rem; }
+  .node { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: var(--r-sm); }
+  .node.sel { background: var(--pine-tint); }
+  .node .ico { color: var(--mist); }
+  .node.sel .ico { color: var(--pine); }
+  .node .count { margin-left: auto; font-family: var(--font-mono); font-size: .74rem; color: var(--mist); }
+  .node.child { margin-left: 22px; }
+  .node.gchild { margin-left: 44px; }
+
+  /* empty state */
+  .empty { text-align: center; padding: 26px 16px; }
+  .empty .eh { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; margin: 0 0 6px; }
+  .empty .es { color: var(--graphite-70); margin: 0 0 16px; font-size: .95rem; }
+
+  /* toast */
+  .toast { display: flex; align-items: center; gap: 12px; background: var(--graphite); color: var(--paper); border-radius: var(--r-md); padding: 12px 16px; box-shadow: var(--shadow-overlay); }
+  .toast .ok { width: 22px; height: 22px; border-radius: 50%; background: var(--pine); color: #fff; display: grid; place-items: center; flex: 0 0 auto; }
+  .toast .txt { font-size: .9rem; }
+  .toast .txt b { font-family: var(--font-mono); font-weight: 600; letter-spacing: .03em; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 22px; color: var(--mist); font-size: .82rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  .theme-toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 10;
+    font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase;
+    background: var(--card); color: var(--graphite); border: 1px solid var(--line);
+    border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  }
+  .theme-toggle:focus-visible { outline: 2px solid var(--pine); outline-offset: 2px; }
+
+  svg { display: block; }
+  @media (max-width: 560px) {
+    .type-row { grid-template-columns: 1fr; gap: 8px; }
+    .sec-note { display: none; }
+  }
+</style>
+
+<button class="theme-toggle" id="tt" aria-label="Alternar tema">◐ Tema</button>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Style Tile · Inventário Doméstico</div>
+    <h1 class="wordmark">Etiqueta<span class="dot">.</span></h1>
+    <p class="lede">A identidade de uma casa etiquetada e em ordem. Um único elemento carrega
+      a marca — o <strong>código do local como etiqueta física</strong> — ligando cada registro
+      digital ao rótulo colado no móvel.</p>
+    <div class="hero-tags">
+      <span class="tag lg">ARM-A · GAV-02</span>
+      <span class="path"><span>Escritório</span><span class="sep">›</span><span>Armário A</span><span class="sep">›</span><span class="last">Gaveta 2</span></span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">A Etiqueta — elemento-assinatura</h2>
+      <p class="sec-note">O único objeto realmente "desenhado" da interface</p>
+    </div>
+    <div class="grid cols">
+      <div class="panel">
+        <h3>Variações</h3>
+        <div style="display:flex; flex-direction:column; gap:16px; align-items:flex-start;">
+          <span class="tag lg">ARM-A · GAV-02</span>
+          <span class="tag">COZ-B · CX-07</span>
+          <span class="path"><span>Sala</span><span class="sep">›</span><span>Estante</span><span class="sep">›</span><span class="last">Caixa 3</span></span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Anatomia</h3>
+        <p class="t-small" style="margin-top:0">Fundo <b>manila</b> (papel kraft), borda
+          <b>manila-line</b>, furo de etiqueta à esquerda, código em <b>monoespaçada</b>
+          maiúscula. Tinta sempre grafite escura sobre o kraft (contraste ~9:1).</p>
+        <p class="t-small">Toque na etiqueta → abre o local e seus vizinhos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Paleta</h2>
+      <p class="sec-note">Materiais de armazenamento — papel, kraft, pinho</p>
+    </div>
+    <div class="grid swatches" id="swatches"></div>
+    <div style="margin-top:22px">
+      <h3 style="font-family:var(--font-display); font-weight:600; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--mist);">Cores de categoria</h3>
+      <div class="cats" id="cats"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Tipografia</h2>
+      <p class="sec-note">Bricolage Grotesque · Inter · JetBrains Mono</p>
+    </div>
+    <div class="panel">
+      <div class="type-row"><span class="type-key">display-xl</span><span class="t-display-xl">Nada por aqui ainda</span></div>
+      <div class="type-row"><span class="type-key">display-l</span><span class="t-display-l">Armário A · Gaveta 2</span></div>
+      <div class="type-row"><span class="type-key">heading</span><span class="t-heading">Itens nesta gaveta</span></div>
+      <div class="type-row"><span class="type-key">body</span><span class="t-body">Carregador USB-C de 65W, com cabo trançado. Guardado com os demais cabos de energia.</span></div>
+      <div class="type-row"><span class="type-key">small</span><span class="t-small">Atualizado há 2 dias · 4 fotos</span></div>
+      <div class="type-row"><span class="type-key">code</span><span class="t-code">ARM-A · GAV-02 · ×2</span></div>
+    </div>
+    <p class="font-note">Esta prévia usa fontes de sistema como substitutas — o sandbox de
+      artefatos bloqueia CDNs de fontes. Na aplicação, incorpore Bricolage Grotesque, Inter
+      e JetBrains Mono via <code>@font-face</code>.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Componentes</h2>
+      <p class="sec-note">Papel calmo, pinho como única ação</p>
+    </div>
+    <div class="grid cols">
+      <div class="panel">
+        <h3>Botões</h3>
+        <div class="btn-row">
+          <button class="btn primary">Salvar</button>
+          <button class="btn secondary">Mover</button>
+          <button class="btn danger">Excluir</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Campo de formulário</h3>
+        <div class="field">
+          <label for="nm">Nome do item</label>
+          <input id="nm" type="text" value="Carregador USB-C" />
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Card de item</h3>
+        <div class="item-card">
+          <div class="thumb" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="item-body">
+            <span class="item-name">Carregador USB-C</span>
+            <div class="item-meta">
+              <span class="tag">ARM-A · GAV-02</span>
+              <span class="qty">×2</span>
+            </div>
+            <span class="catchip" style="align-self:flex-start"><span class="dot" style="background:#2F6B4F"></span>Eletrônicos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Árvore de locais</h3>
+        <div class="tree">
+          <div class="node"><span class="ico">▸</span><span>Escritório</span><span class="count">38</span></div>
+          <div class="node child"><span class="ico">▾</span><span>Armário A</span><span class="count">21</span></div>
+          <div class="node gchild sel"><span class="ico">▪</span><span>Gaveta 2</span><span class="count">9</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Estado vazio</h3>
+        <div class="empty">
+          <p class="eh">Nada por aqui ainda</p>
+          <p class="es">Cadastre o primeiro item desta gaveta.</p>
+          <button class="btn primary">+ Item</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Confirmação de leitura (QR)</h3>
+        <div class="toast">
+          <span class="ok" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span class="txt">Local encontrado: <b>ARM-A · GAV-02</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Inventário Doméstico — direção "Etiqueta" · v1.0</span>
+    <span>Papel · Pinho · Manila · Grafite</span>
+  </footer>
+</div>
+
+<script>
+  const core = [
+    ["Papel","--paper"],["Papel Fundo","--paper-2"],["Grafite","--graphite"],
+    ["Pinho","--pine"],["Pinho Escuro","--pine-600"],["Pinho Névoa","--pine-tint"],
+    ["Manila","--manila"],["Manila Traço","--manila-line"],["Névoa","--mist"],
+    ["Traço","--line"],["Âmbar","--amber"],["Ferrugem","--rust"],["Sereno","--sky"]
+  ];
+  const cats = [
+    ["Eletrônicos","#2F6B4F"],["Documentos","#3E7CA6"],["Ferramentas","#B27B2E"],
+    ["Papelaria","#7A5AA0"],["Cozinha","#A6484B"],["Limpeza","#4E7A4A"],
+    ["Roupas / Têxtil","#8A6D3B"],["Diversos","#5B6670"]
+  ];
+  const css = getComputedStyle(document.documentElement);
+  const hexOf = v => css.getPropertyValue(v).trim().toUpperCase();
+  const swEl = document.getElementById("swatches");
+  core.forEach(([nm, v]) => {
+    const d = document.createElement("div");
+    d.className = "sw";
+    d.innerHTML = `<div class="chip" style="background:var(${v})"></div>
+      <div class="meta"><div class="nm">${nm}</div><div class="hex">${hexOf(v)}</div></div>`;
+    swEl.appendChild(d);
+  });
+  const catEl = document.getElementById("cats");
+  cats.forEach(([nm, hex]) => {
+    const s = document.createElement("span");
+    s.className = "catchip";
+    s.innerHTML = `<span class="dot" style="background:${hex}"></span>${nm}`;
+    catEl.appendChild(s);
+  });
+  // hex labels track live theme
+  const refreshHex = () => {
+    const c = getComputedStyle(document.documentElement);
+    swEl.querySelectorAll(".sw").forEach((el, i) => {
+      el.querySelector(".hex").textContent = c.getPropertyValue(core[i][1]).trim().toUpperCase();
+    });
+  };
+  const tt = document.getElementById("tt");
+  tt.addEventListener("click", () => {
+    const cur = document.documentElement.getAttribute("data-theme")
+      || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+    refreshHex();
+  });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", refreshHex);
+</script>
