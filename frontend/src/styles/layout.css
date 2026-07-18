@@ -3,12 +3,14 @@
 .shell {
   min-height: 100%;
   display: grid;
-  grid-template-columns: 1fr;
+  /* minmax(0, …) so a wide child can't stretch the column past the viewport */
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .content {
   max-width: 760px;
   width: 100%;
+  min-width: 0;
   margin: 0 auto;
   padding: 20px 18px 96px;
 }
@@ -88,7 +90,7 @@
 
 @media (min-width: 860px) {
   .shell {
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px minmax(0, 1fr);
   }
   .nav {
     position: sticky;
